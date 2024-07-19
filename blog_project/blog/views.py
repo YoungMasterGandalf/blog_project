@@ -21,3 +21,10 @@ def blog_list(request):
 
     return render(request, "blog/blog_list.html", context)
 
+
+def tag_list(request):
+    tags = Tag.objects.all()
+    context = {"tags": tags}
+
+    return render(request, "blog/tag_list.html", context)
+
