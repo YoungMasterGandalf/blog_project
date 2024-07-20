@@ -4,11 +4,11 @@ from django.core.paginator import Paginator
 
 
 def homepage(request):
-    featured_blogs = Blog.objects.all().order_by("-created_at")[:3]
+    latest_blogs = Blog.objects.all().order_by("-created_at")[:3]
     tags = Tag.objects.all()
 
     return render(
-        request, "blog/homepage.html", {"featured_blogs": featured_blogs, "tags": tags}
+        request, "blog/homepage.html", {"latest_blogs": latest_blogs, "tags": tags}
     )
 
 
