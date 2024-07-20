@@ -25,7 +25,6 @@ class Blog(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
-        # Add logic here to automatically create thumb_image from full_image
         super().save(*args, **kwargs)
 
     def __str__(self):
