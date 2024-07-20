@@ -22,9 +22,12 @@
 
     <h2>Tags</h2>
 
-    {% block tags %}
-        {% for tag in tags %}
-            <h3><a href="{% url 'blog_tag' tag.name %}">{{ tag.name }}</a></h3>
-        {% endfor %}
-    {% endblock tags %}
+    <div class="tag-container">
+        {% block tags %}
+            {% for tag in tags %}
+                <h4><a href="{% url 'blog_tag' tag.name %}">{{ tag.name }}</a></h4>
+            {% endfor %}
+        {% endblock tags %}
+    </div>
 {% endblock page_content %}
+
