@@ -16,7 +16,7 @@ class Tag(models.Model):
 class Blog(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
-    full_image = models.ImageField(upload_to='full_images/')
+    full_image = models.ImageField(default='what_a_week.jpg', blank=True)
     thumb_image = models.ImageField(upload_to='thumb_images/', blank=True, null=True)
     tags = models.ManyToManyField(Tag, related_name='blogs')
     created_at = models.DateTimeField(auto_now_add=True)
