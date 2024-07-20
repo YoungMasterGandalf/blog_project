@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tag List</title>
+</head>
+<body>
+    <h1>Tags</h1>
+    <ul>
+        {% for tag in tags %}
+            <li><a href="{% url 'blog_list' %}?tag={{ tag.slug }}">{{ tag.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

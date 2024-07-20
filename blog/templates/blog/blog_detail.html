@@ -13,5 +13,12 @@
             </a>{% if not forloop.last %}, {% endif %}
         {% endfor %}
     </small>
+
+    {% if blog.full_image %}
+        <div class="blog-image">
+            <img src="{{ blog.full_image.url }}" alt="Image for {{ blog.title }}">
+        </div>
+    {% endif %}
+
     <p>{{ blog.content | linebreaks }}</p>
 {% endblock page_content %}
