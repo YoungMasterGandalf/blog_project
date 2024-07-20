@@ -1,0 +1,25 @@
+{% for blog in blogs %}
+    <div class="blog-post">
+        <div class="blog-header">
+            <div class="blog-thumb-container">
+                <img class="blog-thumb" src="{{ blog.full_image.url }}" alt="Image for {{ blog.title }}">
+            </div>
+            <div class="blog-info">
+                <h3><a href="{% url 'blog_detail' blog.slug %}">{{ blog.title }}</a></h3>
+                <small>
+                    {{ blog.created_at.date }} | Tags:
+                    {% for tag in blog.tags.all %}
+                        <a href="{% url 'blog_tag' tag.name %}">
+                            {{ tag.name }}
+                        </a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </small>
+            </div>
+        </div>
+        <p>{{ blog.content | slice:":400" }}...</p>
+    </div>
+
+    {% if not forloop.last %}
+        <hr class="blog-separator">
+    {% endif %}
+{% endfor %}
