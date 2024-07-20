@@ -28,11 +28,7 @@ def blog_tag(request, tag):
     page_obj = paginator.get_page(page_number)
     context = {"page_obj": page_obj, "tag": tag}
 
-def tag_list(request):
-    tags = Tag.objects.all()
-    context = {"tags": tags}
-
-    return render(request, "blog/tag_list.html", context)
+    return render(request, "blog/blog_tag.html", context)
 
 
 def blog_detail(request, slug):
