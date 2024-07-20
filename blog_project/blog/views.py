@@ -21,6 +21,12 @@ def blog_list(request):
 
     return render(request, "blog/blog_list.html", context)
 
+def blog_tag(request, tag):
+    blogs = Blog.objects.filter(tags__name__icontains=tag).order_by("-created_at")
+    paginator = Paginator(blogs, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    context = {"page_obj": page_obj, "tag": tag}
 
 def tag_list(request):
     tags = Tag.objects.all()
