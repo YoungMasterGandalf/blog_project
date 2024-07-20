@@ -11,18 +11,7 @@
             Found {{ results.count }} result{{ results.count | pluralize }}
         </h3>
     
-        {% for blog in results %}
-            <h3><a href="{% url 'blog_detail' blog.slug %}">{{ blog.title }}</a></h3>
-            <small>
-                {{ blog.created_at.date }} | Tags:
-                {% for tag in blog.tags.all %}
-                    <a href="{% url 'blog_tag' tag.name %}">
-                        {{ tag.name }}
-                    </a>{% if not forloop.last %}, {% endif %}
-                {% endfor %}
-            </small>
-            <p>{{ blog.content | slice:":400" }}...</p>
-        {% endfor %}
+        {% include "blog/blogs_thumbnails.html" with blogs=results %}
 
         <p><a href="{% url "search" %}">Search again</a></p>
         
