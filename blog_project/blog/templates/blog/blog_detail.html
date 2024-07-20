@@ -1,0 +1,15 @@
+{% block page_title %}
+    <h2>{{ blog.title }}</h2>
+{% endblock page_title %}
+
+{% block page_content %}
+    <small>
+        {{ blog.created_at.date }} | Tags:
+        {% for tag in blog.tags.all %}
+            <a href="{% url 'blog_tag' tag.name %}">
+                {{ tag.name }}
+            </a>{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </small>
+    <p>{{ blog.content | linebreaks }}</p>
+{% endblock page_content %}
